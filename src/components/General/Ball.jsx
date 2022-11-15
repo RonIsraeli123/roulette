@@ -2,14 +2,19 @@ import * as React from 'react';
 import Chip from '@mui/material/Chip';
 
 const Ball = (props) => {
-    const { ballValue } = props
     return (
-        <div><Chip
-            className=""
-
-            label={`${ballValue}`}
-            color="default"
-        />
+        <div className='outsideBall' style={{ backgroundColor: props.color }}>
+            {props.ballValue > 8 ?
+                <Chip
+                    style={{ backgroundColor: 'white' }}
+                    label={props.ballValue}
+                /> :
+                <Chip
+                    className='insideBall'
+                    style={{ backgroundColor: props.color }}
+                    label={props.ballValue}
+                />
+            }
         </div>
     );
 }

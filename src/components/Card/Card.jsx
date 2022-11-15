@@ -35,7 +35,9 @@ export const HomeCard = () => {
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            <BasicButtons route="/game" text="להתחלת משחק!"></BasicButtons>
+            <div className='center'>
+                <BasicButtons route="/game" text="להתחלת משחק!"></BasicButtons>
+            </div>
         </Card>
     );
 }

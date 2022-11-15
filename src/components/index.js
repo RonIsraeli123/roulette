@@ -1,3 +1,3 @@
 export { HomeCard } from './Card/Card';
-export { Game } from './Game/Game';
+export { GameForm } from './GameForm/GameForm';
 export { RandomNumbers } from './General/RandomNumbers';

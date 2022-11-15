@@ -5,8 +5,12 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import LinkButton from './Button';
 import Ball from './Ball';
+import { useNavigate } from 'react-router-dom';
+
+import RefreshIcon from '@mui/icons-material/Refresh';
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 import returnNumbers from '../../algo/algo'
 
@@ -45,10 +49,12 @@ function a11yProps(index) {
 }
 
 export const RandomNumbers = (props) => {
+    const navigate = useNavigate();
+
     const [show, setShow] = useState(false)
     const [value, setValue] = React.useState(0);
     const [result] = useState(returnNumbers(props.players, props.sumBalls))
-    console.log(result)
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -56,7 +62,17 @@ export const RandomNumbers = (props) => {
     return (
         <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <LinkButton route="/" text="חזרה הביתה" />
+                <div className='navbarEnd' >
+                    <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/game') }} endIcon={<CompareArrowsIcon />}>
+                        חזור
+                    </Button>
+                    <Button className='ButtonNav' variant="outlined" onClick={() => { navigate(0) }} endIcon={<RefreshIcon />}>
+                        הגרלה מחדש
+                    </Button>
+                    <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/') }} endIcon={<MenuBookIcon />}>
+                        לחוקים
+                    </Button>
+                </div>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     {
                         result.map((item, index) => {
@@ -72,21 +88,30 @@ export const RandomNumbers = (props) => {
                             {show ?
                                 <div className='result'> <h2>הכדורים הם -</h2>
                                     <div className='balls'>
-                                        {item.map((ballValue) => {
-                                            return <Ball ballValue={ballValue} />
+                                        {item.map((ballNumberColor,) => {
+                                            return <Ball ballValue={ballNumberColor[0]} color={ballNumberColor[1]} />
                                         })}
                                     </div>
+                                    <Button variant="contained" onClick={() => { setShow(!show) }}>
+                                        {show ? "הסתר" : "גלה"}
+                                    </Button>
                                 </div>
-                                : <div></div>
-                            }
 
-                            <Button variant="contained" onClick={() => { setShow(!show) }}>
-                                {show ? "הסתר" : "גלה"}
-                            </Button>
+                                : <div>
+                                    <div>
+                                        <div className='result'> <h2>הכדורים הם -</h2>
+                                            <Button variant="contained" onClick={() => { setShow(!show) }}>
+                                                {show ? "הסתר" : "גלה"}
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
                         </TabPanel>
                     )
                 })
             }
         </Box>
+
     );
 }

@@ -6,23 +6,26 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
+import { Config } from '../../config'
 
-const Validtion = (players) => {
-    if (players > 5 || players < 2) {
+const validtion = (players) => {
+    if (players > Config.MAX_PLAYERS || players < Config.MIN_PLAYERS) {
         return false;
     }
     return true;
 }
 
-const ValidtionBalss = (sumBalls) => {
+const validtionBalss = (sumBalls) => {
 
-    if (sumBalls > 3 || sumBalls < 1) {
+    if (sumBalls > Config.MAX_BALLS || sumBalls < Config.MIN_BALLS) {
         return false;
     }
     return true;
 }
+const playersSumChoice = [2, 3, 4, 5]
+const ballsSumChoice = [1, 2, 3]
 
-export const Game = (props) => {
+export const GameForm = (props) => {
     return (
         <div className="GameForm">
             <div className='form'>
@@ -36,7 +39,7 @@ export const Game = (props) => {
                             label="כמות שחקנים"
                             onChange={
                                 e => {
-                                    if (Validtion(e.target.value)) {
+                                    if (validtion(e.target.value)) {
                                         props.setPlayers(e.target.value);
                                     } else {
                                         e.target.value = props.players;
@@ -45,11 +48,9 @@ export const Game = (props) => {
                                 }
                             }
                         >
-                            <MenuItem value={2}>2</MenuItem>
-                            <MenuItem value={3}>3</MenuItem>
-                            <MenuItem value={4}>4</MenuItem>
-                            <MenuItem value={5}>5</MenuItem>
-
+                            {playersSumChoice.map((element) => {
+                                return <MenuItem value={element}>{element}</MenuItem>
+                            })}
                         </Select>
                     </FormControl>
                 </Box>
@@ -64,7 +65,7 @@ export const Game = (props) => {
                             label="כמות כדורים לשחקן"
                             onChange={
                                 e => {
-                                    if (ValidtionBalss(e.target.value)) {
+                                    if (validtionBalss(e.target.value)) {
                                         props.setBalls(e.target.value);
                                     } else {
                                         e.target.value = props.sumBalls;
@@ -73,15 +74,16 @@ export const Game = (props) => {
                                 }
                             }
                         >
-                            <MenuItem value={1}>1</MenuItem>
-                            <MenuItem value={2}>2</MenuItem>
-                            <MenuItem value={3}>3</MenuItem>
+                            {ballsSumChoice.map((element) => {
+                                return <MenuItem value={element}>{element}</MenuItem>
+                            })}
+
 
                         </Select>
                     </FormControl>
                 </Box>
                 <div className="center">
-                    <LinkButton enabled={Validtion(props.players)} route="/RandomNumber" text="הגרל!"></LinkButton>
+                    <LinkButton enabled={validtion(props.players)} route="/RandomNumber" text="הגרל!"></LinkButton>
                 </div>
             </div>
         </div>

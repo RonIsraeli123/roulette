@@ -35,3 +35,30 @@ html{
   align-items: center;
   justify-content: center;
 }
+
+.balls{
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  padding: 1em;
+}
+
+.outsideBall{
+  padding: 1em;
+  border: 1px solid black;
+  border-radius: 100%;
+}
+
+.insideBall{
+  color: white !important;
+}
+
+.ButtonNav{
+  display: flex;
+  border-radius: 30%,
+}
+
+.navbarEnd{
+display: flex;
+flex-wrap: nowrap;
+}
