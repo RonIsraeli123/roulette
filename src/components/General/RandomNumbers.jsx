@@ -63,7 +63,7 @@ export const RandomNumbers = (props) => {
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <div className='navbarEnd' >
                     <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/game') }} endIcon={<CompareArrowsIcon />}>
-                        חזור
+                        להגרלה חוזרת
                     </Button>
                     <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/') }} endIcon={<MenuBookIcon />}>
                         לחוקים
