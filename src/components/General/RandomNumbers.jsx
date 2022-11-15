@@ -8,8 +8,8 @@ import Button from '@mui/material/Button';
 import Ball from './Ball';
 import { useNavigate } from 'react-router-dom';
 
-import RefreshIcon from '@mui/icons-material/Refresh';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 
 import returnNumbers from '../../algo/algo'
 
