@@ -4,6 +4,7 @@ html{
     direction: rtl;
     background-color: aliceblue;
 }
+
 .App {
   display: flex;
   justify-content: center;

@@ -8,7 +8,7 @@ import BasicButtons from '../General/Button'
 
 import Snoker from "../../images/snoker.jpg"
 
-const HomeCard = () => {
+export const HomeCard = () => {
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardActionArea>
@@ -39,5 +39,3 @@ const HomeCard = () => {
         </Card>
     );
 }
-
-export default HomeCard;

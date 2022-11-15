@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import HomeCard from './components/Card/Card';
-import Game from './components/Game/Game';
-import RandomNumbers from './components/General/RandomNumbers';
+import { HomeCard, Game, RandomNumbers } from './components/index';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import './App.css';
@@ -26,7 +25,6 @@ const App = () => {
               />
             }
           />
-
           <Route
             path='/randomNumber'
             element={<RandomNumbers players={numPlayers} sumBalls={sumBalls} />}

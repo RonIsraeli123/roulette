@@ -44,7 +44,7 @@ function a11yProps(index) {
     };
 }
 
-const RandomNumbers = (props) => {
+export const RandomNumbers = (props) => {
     const [show, setShow] = useState(false)
     const [value, setValue] = React.useState(0);
     const [result] = useState(returnNumbers(props.players, props.sumBalls))
@@ -90,4 +90,3 @@ const RandomNumbers = (props) => {
         </Box>
     );
 }
-export default RandomNumbers;

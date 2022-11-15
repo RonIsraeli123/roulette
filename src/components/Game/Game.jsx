@@ -22,7 +22,7 @@ const ValidtionBalss = (sumBalls) => {
     return true;
 }
 
-const Game = (props) => {
+export const Game = (props) => {
     return (
         <div className="GameForm">
             <div className='form'>
@@ -87,5 +87,3 @@ const Game = (props) => {
         </div>
     );
 }
-
-export default Game;
