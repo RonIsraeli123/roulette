@@ -9,7 +9,6 @@ import Ball from './Ball';
 import { useNavigate } from 'react-router-dom';
 
 import RefreshIcon from '@mui/icons-material/Refresh';
-import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 import returnNumbers from '../../algo/algo'
@@ -65,9 +64,6 @@ export const RandomNumbers = (props) => {
                 <div className='navbarEnd' >
                     <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/game') }} endIcon={<CompareArrowsIcon />}>
                         חזור
-                    </Button>
-                    <Button className='ButtonNav' variant="outlined" onClick={() => { navigate(0) }} endIcon={<RefreshIcon />}>
-                        הגרלה מחדש
                     </Button>
                     <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/') }} endIcon={<MenuBookIcon />}>
                         לחוקים
