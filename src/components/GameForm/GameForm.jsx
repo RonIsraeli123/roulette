@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-import { Config } from '../../config'
+import { Config, GaneFormConfig } from '../../config'
 
 const validtion = (players) => {
     if (players > Config.MAX_PLAYERS || players < Config.MIN_PLAYERS) {
@@ -31,19 +31,19 @@ export const GameForm = (props) => {
             <div className='form'>
                 <Box sx={{ minWidth: 120 }}>
                     <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">כמות שחקנים</InputLabel>
+                        <InputLabel id="demo-simple-select-label">{GaneFormConfig.NUMBER_OF_PLAYERS}</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             value={props.players}
-                            label="כמות שחקנים"
+                            label={GaneFormConfig.NUMBER_OF_PLAYERS}
                             onChange={
                                 e => {
                                     if (validtion(e.target.value)) {
                                         props.setPlayers(e.target.value);
                                     } else {
                                         e.target.value = props.players;
-                                        alert("מספר המשתתפים צריך להיות גדול מ2 וקטן מ5");
+                                        alert(GaneFormConfig.PLAYERS_ALERT_MESSAGE_TEXT);
                                     }
                                 }
                             }
@@ -57,19 +57,19 @@ export const GameForm = (props) => {
 
                 <Box sx={{ minWidth: 120 }}>
                     <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">כמות כדורים לשחקן</InputLabel>
+                        <InputLabel id="demo-simple-select-label">{GaneFormConfig.NUMBER_OF_BALLS}</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             value={props.sumBalls}
-                            label="כמות כדורים לשחקן"
+                            label={GaneFormConfig.NUMBER_OF_BALLS}
                             onChange={
                                 e => {
                                     if (validtionBalss(e.target.value)) {
                                         props.setBalls(e.target.value);
                                     } else {
                                         e.target.value = props.sumBalls;
-                                        alert("כמות הכדורים חייבת להיות בין 1 ל 3 ");
+                                        alert(GaneFormConfig.BALLS_ALERT_MESSAGE_TEXT);
                                     }
                                 }
                             }
@@ -83,7 +83,7 @@ export const GameForm = (props) => {
                     </FormControl>
                 </Box>
                 <div className="center">
-                    <LinkButton enabled={validtion(props.players)} route="/RandomNumber" text="הגרל!"></LinkButton>
+                    <LinkButton enabled={validtion(props.players)} route="/RandomNumber" text={GaneFormConfig.SHUFFLE_BUTTON}></LinkButton>
                 </div>
             </div>
         </div>

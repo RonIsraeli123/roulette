@@ -1,11 +1,13 @@
 import * as React from 'react';
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import BasicButtons from '../General/Button'
 
+import BasicButtons from '../General/Button'
+import { HomeCardConfig } from '../../config'
 import Snoker from "../../images/snoker.jpg"
 
 export const HomeCard = () => {
@@ -20,23 +22,23 @@ export const HomeCard = () => {
                 />
                 <CardContent>
                     <Typography gutterBottom align="center" variant="h5" component="div">
-                        משחק הרולטה - סנוקר
+                        {HomeCardConfig.TITLE}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        <h3>איך משחקים-</h3>
+                        <h3>{HomeCardConfig.INIT_TITLE}</h3>
+                        <p> {HomeCardConfig.INIT_EXPLANATION}</p>
+
+                        <h3>{HomeCardConfig.SUBTITLE2}</h3>
                         <ul>
-                            <li>בוחרים כמות משתתפים</li>
-                            <li>מגרילים מספרים</li>
+                            <li>{HomeCardConfig.SUBTITLE2_POINT1}</li>
+                            <li>{HomeCardConfig.SUBTITLE2_POINT2}</li>
                         </ul>
-                        <h3>הוראות-</h3>
-                        <p> כל משתתף מקבל בין 1 ל3  כדורים רק המגריל יודע את מספר הכדורים שלו </p>
-                        <p> מטרתו היא להכניס את הכדורים של היריבים שלו מבלי שיכנסו כל הכדורים שלו </p>
-                        <p>   מי שהצליח לעשות זאת ניצח!</p>
+
                     </Typography>
                 </CardContent>
             </CardActionArea>
             <div className='center'>
-                <BasicButtons route="/game" text="להתחלת משחק!"></BasicButtons>
+                <BasicButtons route="/game" text={HomeCardConfig.START_BUTTON_TEXT}></BasicButtons>
             </div>
         </Card>
     );

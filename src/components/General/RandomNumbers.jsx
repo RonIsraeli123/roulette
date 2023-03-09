@@ -8,8 +8,11 @@ import Button from '@mui/material/Button';
 import Ball from './Ball';
 import { useNavigate } from 'react-router-dom';
 
-import MenuBookIcon from '@mui/icons-material/MenuBook';
+import { NavBarConfig, ResultPageConfig } from '../../config'
+
+import RefreshIcon from '@mui/icons-material/Refresh';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 import returnNumbers from '../../algo/algo'
 
@@ -63,41 +66,44 @@ export const RandomNumbers = (props) => {
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <div className='navbarEnd' >
                     <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/game') }} endIcon={<CompareArrowsIcon />}>
-                        להגרלה חוזרת
+                        {NavBarConfig.GO_BACK}
                     </Button>
+                    <Button className='ButtonNav' variant="outlined" onClick={() => { navigate(0) }} endIcon={<RefreshIcon />}>
+                        {NavBarConfig.RESHUFFLE}
+                    </Button >
                     <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/') }} endIcon={<MenuBookIcon />}>
-                        לחוקים
+                        {NavBarConfig.PASS_TO_RULES}
                     </Button>
-                </div>
+                </div >
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     {
                         result.map((item, index) => {
-                            return <Tab label={`שחקן ${index + 1} `} {...a11yProps(index)} />
+                            return <Tab label={`${ResultPageConfig.PLAYER_TITLE} ${index + 1} `} {...a11yProps(index)} />
                         })
                     }
                 </Tabs>
-            </Box>
+            </Box >
             {
                 result.map((item, index) => {
                     return (
                         <TabPanel value={value} index={index}>
                             {show ?
-                                <div className='result'> <h2>הכדורים הם -</h2>
+                                <div className='result'> <h2>{ResultPageConfig.BALLS_TITLE}</h2>
                                     <div className='balls'>
                                         {item.map((ballNumberColor,) => {
                                             return <Ball ballValue={ballNumberColor[0]} color={ballNumberColor[1]} />
                                         })}
                                     </div>
                                     <Button variant="contained" onClick={() => { setShow(!show) }}>
-                                        {show ? "הסתר" : "גלה"}
+                                        {show ? "hide" : "show"}
                                     </Button>
                                 </div>
 
                                 : <div>
                                     <div>
-                                        <div className='result'> <h2>הכדורים הם -</h2>
+                                        <div className='result'> <h2>{ResultPageConfig.BALLS_TITLE}</h2>
                                             <Button variant="contained" onClick={() => { setShow(!show) }}>
-                                                {show ? "הסתר" : "גלה"}
+                                                {show ? "hide" : "show"}
                                             </Button>
                                         </div>
                                     </div>
@@ -107,7 +113,7 @@ export const RandomNumbers = (props) => {
                     )
                 })
             }
-        </Box>
+        </Box >
 
     );
 }
