@@ -1,6 +1,6 @@
 export const ResultPageConfig = {
   PLAYER_TITLE: 'player',
-  BALLS_TITLE: 'Balls Number - ',
+  BALLS_TITLE: 'Ball Numbers',
 };
 export const NavBarConfig = {
   GO_BACK: 'go back',

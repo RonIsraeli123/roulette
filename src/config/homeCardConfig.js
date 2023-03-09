@@ -7,7 +7,7 @@ export const HomeCardConfig = {
 
   INIT_TITLE: 'Instructions-',
   INIT_EXPLANATION:
-    'Each participant receives between 1 and 3 balls, and only they know their own number of balls. The goal of the game is to be the last one remaining. The game ends when all participants have no balls left on the table except for you. Whoever manages to do this wins the game!',
+    'Each participant receives between 1 and 3 balls which are not revealed to other participants. The goal is to be the "last one standing!". The game ends when all participants have no balls left on the table except for you. Whoever manages to do this wins the game!',
 
   START_BUTTON_TEXT: 'Start a game!',
 };
