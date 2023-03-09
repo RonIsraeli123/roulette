@@ -4,6 +4,6 @@ export const ResultPageConfig = {
 };
 export const NavBarConfig = {
   GO_BACK: 'go back',
-  RESHUFFLE: 'redraw',
+  RESHUFFLE: 'reroll',
   PASS_TO_RULES: 'rules',
 };
