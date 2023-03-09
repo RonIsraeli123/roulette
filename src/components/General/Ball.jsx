@@ -9,11 +9,20 @@ const Ball = (props) => {
                     style={{ backgroundColor: 'white' }}
                     label={props.ballValue}
                 /> :
-                <Chip
-                    className='insideBall'
-                    style={{ backgroundColor: props.color }}
-                    label={props.ballValue}
-                />
+                props.ballValue === 8 ?
+                    <Chip
+                        className='insideBall'
+                        style={{ backgroundColor: props.color, color: 'white' }}
+                        label={props.ballValue}
+                    />
+
+                    :
+                    <Chip
+                        className='insideBall'
+                        style={{ backgroundColor: props.color }}
+                        label={props.ballValue}
+                    />
+
             }
         </div>
     );

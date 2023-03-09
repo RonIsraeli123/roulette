@@ -59,6 +59,7 @@ export const RandomNumbers = (props) => {
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+        setShow(false)
     };
 
     return (
