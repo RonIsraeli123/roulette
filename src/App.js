@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HomeCard, GameForm, RandomNumbers } from './components/index';
+import { HomeCard, GameForm, BallsResult } from './components/index';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -27,7 +27,7 @@ const App = () => {
           />
           <Route
             path='/randomNumber'
-            element={<RandomNumbers players={numPlayers} sumBalls={sumBalls} />}
+            element={<BallsResult players={numPlayers} sumBalls={sumBalls} />}
           />
         </Routes>
       </div>

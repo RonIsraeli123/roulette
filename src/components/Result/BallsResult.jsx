@@ -5,7 +5,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Ball from './Ball';
+import Ball from '../General/Ball';
 import { useNavigate } from 'react-router-dom';
 
 import { NavBarConfig, ResultPageConfig } from '../../config'
@@ -50,7 +50,7 @@ function a11yProps(index) {
     };
 }
 
-export const RandomNumbers = (props) => {
+export const BallsResult = (props) => {
     const navigate = useNavigate();
 
     const [show, setShow] = useState(false)
@@ -99,7 +99,6 @@ export const RandomNumbers = (props) => {
                                         {show ? "hide" : "show"}
                                     </Button>
                                 </div>
-
                                 : <div>
                                     <div>
                                         <div className='result'> <h2>{ResultPageConfig.BALLS_TITLE}</h2>

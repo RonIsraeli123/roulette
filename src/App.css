@@ -61,3 +61,8 @@ html{
 display: flex;
 flex-wrap: nowrap;
 }
+
+.MuiTabs-flexContainer {
+display: flex !important;
+flex-wrap: wrap !important;
+}
