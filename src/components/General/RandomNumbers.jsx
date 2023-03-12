@@ -5,6 +5,9 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import SendToMobileIcon from '@mui/icons-material/SendToMobile';
+import TextField from '@mui/material/TextField';
+
 import Ball from './Ball';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,6 +18,7 @@ import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 import returnNumbers from '../../algo/algo'
+import sendMailAction from '../../algo/sendMail'
 
 
 function TabPanel(props) {
@@ -55,12 +59,25 @@ export const RandomNumbers = (props) => {
 
     const [show, setShow] = useState(false)
     const [value, setValue] = React.useState(0);
+    const [dstMail, setDstMail] = React.useState('');
     const [result] = useState(returnNumbers(props.players, props.sumBalls))
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
         setShow(false)
     };
+    const sendMail = () => {
+        let playersAndBalls = []
+        result.forEach((player, index) => {
+            let playerNumber = index
+            let playerBalls = []
+            player.forEach((ballNumber,) => {
+                playerBalls.push(ballNumber[0])
+            })
+            playersAndBalls.push({ "playerNumber": playerNumber, "balls": playerBalls.toString() })
+        })
+        // sendMailAction(playersAndBalls, dstMail)
+    }
 
     return (
         <Box sx={{ width: '100%' }}>
@@ -114,6 +131,12 @@ export const RandomNumbers = (props) => {
                     )
                 })
             }
+            <Box className='rigth_bottom' sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                <SendToMobileIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                <TextField id="input-with-sx" label="Mail" variant="standard" onChange={(e) => setDstMail(e.target.value)} />
+                <Button onClick={() => sendMail()}> Send Mail</Button>
+            </Box>
+
         </Box >
 
     );
