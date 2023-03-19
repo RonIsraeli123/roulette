@@ -9,7 +9,6 @@ import Select from '@mui/material/Select';
 import { Link } from 'react-router-dom';
 
 import { Config, GaneFormConfig } from '../../config'
-import returnNumbers from '../../algo/algo'
 
 const validtion = (players) => {
     if (players > Config.MAX_PLAYERS || players < Config.MIN_PLAYERS) {
@@ -23,10 +22,6 @@ const playersSumChoice = [2, 3, 4, 5]
 const ballsSumChoice = [1, 2, 3]
 
 export const GameForm = (props) => {
-    const calcBalls = () => {
-        props.setResult(returnNumbers(props.players, props.sumBalls))
-    }
-
     return (
         <div className="GameForm">
             <div className='form'>
@@ -49,8 +44,8 @@ export const GameForm = (props) => {
                                 }
                             }
                         >
-                            {playersSumChoice.map((element) => {
-                                return <MenuItem value={element}>{element}</MenuItem>
+                            {playersSumChoice.map((element, index) => {
+                                return <MenuItem key={index} value={element}>{element}</MenuItem>
                             })}
                         </Select>
                     </FormControl>
@@ -79,7 +74,7 @@ export const GameForm = (props) => {
                     </FormControl>
                 </Box>
                 <div className="center">
-                    <Button onClick={() => calcBalls()} component={Link} to={"/RandomNumber"} variant="contained" color="inherit">{GaneFormConfig.SHUFFLE_BUTTON}</Button>
+                    <Button component={Link} to={"/RandomNumber"} variant="contained" color="inherit">{GaneFormConfig.SHUFFLE_BUTTON}</Button>
                 </div>
             </div>
         </div>

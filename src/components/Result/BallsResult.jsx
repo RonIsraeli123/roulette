@@ -54,6 +54,7 @@ export const BallsResult = (props) => {
 
     const [show, setShow] = useState(false)
     const [value, setValue] = React.useState(0);
+    const [result, setResult] = React.useState(returnNumbers(props.players, props.sumBalls));
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -67,7 +68,7 @@ export const BallsResult = (props) => {
                     <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/game') }} endIcon={<CompareArrowsIcon />}>
                         {NavBarConfig.GO_BACK}
                     </Button>
-                    <Button className='ButtonNav' variant="outlined" onClick={() => { props.setResult(returnNumbers(props.players, props.sumBalls)); setShow(false) }} endIcon={<RefreshIcon />}>
+                    <Button className='ButtonNav' variant="outlined" onClick={() => { setResult(returnNumbers(props.players, props.sumBalls)); setShow(false) }} endIcon={<RefreshIcon />}>
                         {NavBarConfig.RESHUFFLE}
                     </Button >
                     <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/') }} endIcon={<MenuBookIcon />}>
@@ -76,22 +77,22 @@ export const BallsResult = (props) => {
                 </div >
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     {
-                        props.result.map((item, index) => {
-                            return <Tab label={`${ResultPageConfig.PLAYER_TITLE} ${index + 1} `} {...a11yProps(index)} />
+                        result.map((item, index) => {
+                            return <Tab key={index} label={`${ResultPageConfig.PLAYER_TITLE} ${index + 1} `} {...a11yProps(index)} />
                         })
                     }
                 </Tabs>
             </Box >
             {
-                props.result.map((item, index) => {
+                result.map((item, index) => {
                     return (
-                        <TabPanel value={value} index={index}>
+                        <TabPanel key={index} value={value} index={index}>
                             {show ?
                                 <div className='balls-section'>
                                     <h2>{ResultPageConfig.BALLS_TITLE}</h2>
                                     <div className='balls'>
-                                        {item.map((ballNumberColor,) => {
-                                            return <Ball ballValue={ballNumberColor[0]} color={ballNumberColor[1]} />
+                                        {item.map((ballNumberColor, index) => {
+                                            return <Ball key={index} ballValue={ballNumberColor[0]} color={ballNumberColor[1]} />
                                         })}
                                     </div>
                                     <Button variant="contained" onClick={() => { setShow(!show) }}>

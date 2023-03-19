@@ -3,7 +3,7 @@ import Chip from '@mui/material/Chip';
 
 const Ball = (props) => {
     return (
-        <div className='outsideBall' style={{ backgroundColor: props.color }}>
+        <div key={props.index} className='outsideBall' style={{ backgroundColor: props.color }}>
             {props.ballValue > 8 ?
                 <Chip
                     style={{ backgroundColor: 'white' }}

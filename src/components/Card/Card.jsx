@@ -26,7 +26,7 @@ export const HomeCard = () => {
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         <h3>{HomeCardConfig.INIT_TITLE}</h3>
-                        <p> {HomeCardConfig.INIT_EXPLANATION}</p>
+                        <Typography> {HomeCardConfig.INIT_EXPLANATION}</Typography>
 
                         <h3>{HomeCardConfig.SUBTITLE2}</h3>
                         <ul>
