@@ -16,7 +16,6 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 import returnNumbers from '../../algo/algo'
 
-
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -55,7 +54,6 @@ export const BallsResult = (props) => {
 
     const [show, setShow] = useState(false)
     const [value, setValue] = React.useState(0);
-    const [result] = useState(returnNumbers(props.players, props.sumBalls))
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -69,7 +67,7 @@ export const BallsResult = (props) => {
                     <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/game') }} endIcon={<CompareArrowsIcon />}>
                         {NavBarConfig.GO_BACK}
                     </Button>
-                    <Button className='ButtonNav' variant="outlined" onClick={() => { navigate(0) }} endIcon={<RefreshIcon />}>
+                    <Button className='ButtonNav' variant="outlined" onClick={() => { props.setResult(returnNumbers(props.players, props.sumBalls)); setShow(false) }} endIcon={<RefreshIcon />}>
                         {NavBarConfig.RESHUFFLE}
                     </Button >
                     <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/') }} endIcon={<MenuBookIcon />}>
@@ -78,18 +76,19 @@ export const BallsResult = (props) => {
                 </div >
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     {
-                        result.map((item, index) => {
+                        props.result.map((item, index) => {
                             return <Tab label={`${ResultPageConfig.PLAYER_TITLE} ${index + 1} `} {...a11yProps(index)} />
                         })
                     }
                 </Tabs>
             </Box >
             {
-                result.map((item, index) => {
+                props.result.map((item, index) => {
                     return (
                         <TabPanel value={value} index={index}>
                             {show ?
-                                <div className='result'> <h2>{ResultPageConfig.BALLS_TITLE}</h2>
+                                <div className='balls-section'>
+                                    <h2>{ResultPageConfig.BALLS_TITLE}</h2>
                                     <div className='balls'>
                                         {item.map((ballNumberColor,) => {
                                             return <Ball ballValue={ballNumberColor[0]} color={ballNumberColor[1]} />
@@ -101,7 +100,8 @@ export const BallsResult = (props) => {
                                 </div>
                                 : <div>
                                     <div>
-                                        <div className='result'> <h2>{ResultPageConfig.BALLS_TITLE}</h2>
+                                        <div className='balls-section'>
+                                            <h2>{ResultPageConfig.BALLS_TITLE}</h2>
                                             <Button variant="contained" onClick={() => { setShow(!show) }}>
                                                 {show ? "hide" : "show"}
                                             </Button>

@@ -66,3 +66,25 @@ flex-wrap: nowrap;
 display: flex !important;
 flex-wrap: wrap !important;
 }
+
+.ballsResult{
+  height: 80vh; /* Set the height of the container to the full height of the viewport */
+
+}
+
+.left-down{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.balls-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.share{
+  display: flex;
+  flex-direction: column;
+}
