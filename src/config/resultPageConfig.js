@@ -3,7 +3,7 @@ export const ResultPageConfig = {
   BALLS_TITLE: 'Ball Numbers',
 };
 export const NavBarConfig = {
-  GO_BACK: 'go back',
+  GO_BACK: 'back',
   RESHUFFLE: 'reroll',
   PASS_TO_RULES: 'rules',
 };

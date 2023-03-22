@@ -34,6 +34,7 @@ html{
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 1em;
 }
 
 .balls{
@@ -49,9 +50,6 @@ html{
   border-radius: 100%;
 }
 
-.insideBall{
-}
-
 .ButtonNav{
   display: flex;
   border-radius: 30%,
@@ -60,6 +58,9 @@ html{
 .navbarEnd{
 display: flex;
 flex-wrap: nowrap;
+justify-content: center;
+gap: 2px;
+
 }
 
 .MuiTabs-flexContainer {
