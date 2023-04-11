@@ -1,11 +1,4 @@
 [[redirects]]
-  from = "/*"
-  to = "/"
-  status = 200
-  force = false
-  conditions = {Role = ["admin"]}
-      
-[[redirects]]
-  from = "/*"
-  to = "/"
-  status = 302
+from = "/*"
+to = "index.html"
+status = 200
