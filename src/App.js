@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { HomePage, FormPage, ResultPage } from './Pages';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import { HomePage, FormPage, ResultPage } from './Pages';
 import './App.css';
 
 const App = () => {

@@ -1,4 +1,11 @@
 [[redirects]]
-from = "/*"
-to = "/"
-status = 200
+  from = "/*"
+  to = "/"
+  status = 200
+  force = false
+  conditions = {Role = ["admin"]}
+      
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 302
