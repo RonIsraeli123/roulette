@@ -5,4 +5,5 @@ export const GameFormConfig = {
   PLAYERS_ALERT_MESSAGE_TEXT:
     'The number of participants should be greater than 2 and less than 5.',
   SHUFFLE_BUTTON: 'Roll!',
+  BACK_BUTTON: 'Back',
 };

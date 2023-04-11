@@ -17,9 +17,10 @@ const validation = (players) => {
     }
     return true;
 }
-const playersSumChoice = [2, 3, 4, 5]
-const ballsSumChoice = [1, 2, 3]
+
 export const Form = (props) => {
+    const playersSumChoice = [2, 3, 4, 5]
+    const ballsSumChoice = [1, 2, 3]
 
     return (
         <div className="GameForm">
@@ -72,8 +73,9 @@ export const Form = (props) => {
                         </Select>
                     </FormControl>
                 </Box>
-                <div className="center">
+                <div className="formLinks">
                     <Button component={Link} to={"/RandomNumber"} variant="contained" color="inherit">{GameFormConfig.SHUFFLE_BUTTON}</Button>
+                    <Button component={Link} to={"/"} variant="contained" color="inherit">{GameFormConfig.BACK_BUTTON}</Button>
                 </div>
             </div>
         </div>
