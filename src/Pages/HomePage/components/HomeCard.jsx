@@ -6,9 +6,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-import BasicButtons from '../General/Button'
-import { HomeCardConfig } from '../../config'
-import Snoker from "../../images/snoker.jpg"
+import BasicButtons from '../../General/Button'
+import { HomeCardConfig } from '../../../config'
+import Snooker from "../../../images/Snooker.jpg"
 
 export const HomeCard = () => {
     return (
@@ -17,14 +17,14 @@ export const HomeCard = () => {
                 <CardMedia
                     component="img"
                     height="140"
-                    image={Snoker}
+                    image={Snooker}
                     alt="green iguana"
                 />
                 <CardContent>
                     <Typography gutterBottom align="center" variant="h5" component="div">
                         {HomeCardConfig.TITLE}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography component={'span'} variant="body2" color="text.secondary">
                         <h3>{HomeCardConfig.INIT_TITLE}</h3>
                         <Typography> {HomeCardConfig.INIT_EXPLANATION}</Typography>
 

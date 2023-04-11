@@ -1,4 +1,4 @@
-export const GaneFormConfig = {
+export const GameFormConfig = {
   NUMBER_OF_PLAYERS: 'Number of players',
   NUMBER_OF_BALLS: 'Number of balls',
   BALLS_ALERT_MESSAGE_TEXT: 'The number of balls must be between 1 and 3.',

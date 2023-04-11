@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HomeCard, GameForm, ResultPage } from './components/index';
+import { HomePage, FormPage, ResultPage } from './Pages';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -14,12 +14,12 @@ const App = () => {
     <Router>
       <div className='App'>
         <Routes>
-          <Route path='/' exact element={<HomeCard />} />
+          <Route path='/' exact element={<HomePage />} />
           <Route
             path='/game'
             element={
-              <GameForm
-                players={numPlayers}
+              <FormPage
+                numPlayers={numPlayers}
                 sumBalls={sumBalls}
                 setPlayers={(n) => setNumPlayers(n)}
                 setBalls={(n) => setSumBalls(n)}

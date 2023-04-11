@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -6,40 +8,37 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-import { Link } from 'react-router-dom';
 
-import { Config, GaneFormConfig } from '../../config'
+import { Config, GameFormConfig } from '../../../config'
 
-const validtion = (players) => {
+const validation = (players) => {
     if (players > Config.MAX_PLAYERS || players < Config.MIN_PLAYERS) {
         return false;
     }
     return true;
 }
-
-
 const playersSumChoice = [2, 3, 4, 5]
 const ballsSumChoice = [1, 2, 3]
+export const Form = (props) => {
 
-export const GameForm = (props) => {
     return (
         <div className="GameForm">
             <div className='form'>
                 <Box sx={{ minWidth: 120 }}>
                     <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">{GaneFormConfig.NUMBER_OF_PLAYERS}</InputLabel>
+                        <InputLabel id="demo-simple-select-label">{GameFormConfig.NUMBER_OF_PLAYERS}</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value={props.players}
-                            label={GaneFormConfig.NUMBER_OF_PLAYERS}
+                            value={props.numPlayers}
+                            label={GameFormConfig.NUMBER_OF_PLAYERS}
                             onChange={
                                 e => {
-                                    if (validtion(e.target.value)) {
+                                    if (validation(e.target.value)) {
                                         props.setPlayers(e.target.value);
                                     } else {
                                         e.target.value = props.players;
-                                        alert(GaneFormConfig.PLAYERS_ALERT_MESSAGE_TEXT);
+                                        alert(GameFormConfig.PLAYERS_ALERT_MESSAGE_TEXT);
                                     }
                                 }
                             }
@@ -53,20 +52,20 @@ export const GameForm = (props) => {
 
                 <Box sx={{ minWidth: 120 }}>
                     <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">{GaneFormConfig.NUMBER_OF_BALLS}</InputLabel>
+                        <InputLabel id="demo-simple-select-label">{GameFormConfig.NUMBER_OF_BALLS}</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             value={props.sumBalls}
-                            label={GaneFormConfig.NUMBER_OF_BALLS}
+                            label={GameFormConfig.NUMBER_OF_BALLS}
                             onChange={
                                 e => {
                                     props.setBalls(e.target.value);
                                 }
                             }
                         >
-                            {ballsSumChoice.map((element) => {
-                                return <MenuItem value={element}>{element}</MenuItem>
+                            {ballsSumChoice.map((element, index) => {
+                                return <MenuItem key={index} value={element}>{element}</MenuItem>
                             })}
 
 
@@ -74,7 +73,7 @@ export const GameForm = (props) => {
                     </FormControl>
                 </Box>
                 <div className="center">
-                    <Button component={Link} to={"/RandomNumber"} variant="contained" color="inherit">{GaneFormConfig.SHUFFLE_BUTTON}</Button>
+                    <Button component={Link} to={"/RandomNumber"} variant="contained" color="inherit">{GameFormConfig.SHUFFLE_BUTTON}</Button>
                 </div>
             </div>
         </div>

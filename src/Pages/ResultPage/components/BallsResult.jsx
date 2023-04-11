@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Ball from '../General/Ball';
-import { useNavigate } from 'react-router-dom';
-
-import { NavBarConfig, ResultPageConfig } from '../../config'
-
 import RefreshIcon from '@mui/icons-material/Refresh';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 
-import returnNumbers from '../../algo/algo'
+import { useNavigate } from 'react-router-dom';
+
+import { NavBarConfig, ResultPageConfig } from '../../../config'
+import returnNumbers from '../../../algorithm/algo'
+import Ball from '../../General/Ball';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
