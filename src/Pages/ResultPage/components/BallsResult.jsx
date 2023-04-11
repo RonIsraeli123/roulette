@@ -65,7 +65,7 @@ export const BallsResult = (props) => {
         <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <div className='navbarEnd' >
-                    <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/game') }} endIcon={<CompareArrowsIcon />}>
+                    <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/Form') }} endIcon={<CompareArrowsIcon />}>
                         {NavBarConfig.GO_BACK}
                     </Button>
                     <Button className='ButtonNav' variant="outlined" onClick={() => { setResult(returnNumbers(props.players, props.sumBalls)); setShow(false) }} endIcon={<RefreshIcon />}>

@@ -16,7 +16,7 @@ const App = () => {
         <Routes>
           <Route path='/' exact element={<HomePage />} />
           <Route
-            path='/game'
+            path='/Form'
             element={
               <FormPage
                 numPlayers={numPlayers}

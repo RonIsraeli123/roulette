@@ -38,7 +38,7 @@ export const HomeCard = () => {
                 </CardContent>
             </CardActionArea>
             <div className='center'>
-                <BasicButtons route="/game" text={HomeCardConfig.START_BUTTON_TEXT}></BasicButtons>
+                <BasicButtons route="/Form" text={HomeCardConfig.START_BUTTON_TEXT}></BasicButtons>
             </div>
         </Card>
     );
