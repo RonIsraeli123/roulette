@@ -36,9 +36,9 @@ export const Form = (props) => {
                             onChange={
                                 e => {
                                     if (validation(e.target.value)) {
-                                        props.setPlayers(e.target.value);
+                                        props.setNumPlayers(e.target.value);
                                     } else {
-                                        e.target.value = props.players;
+                                        e.target.value = props.numPlayers;
                                         alert(GameFormConfig.PLAYERS_ALERT_MESSAGE_TEXT);
                                     }
                                 }

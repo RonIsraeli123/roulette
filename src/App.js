@@ -21,7 +21,7 @@ const App = () => {
               <FormPage
                 numPlayers={numPlayers}
                 sumBalls={sumBalls}
-                setPlayers={(n) => setNumPlayers(n)}
+                setNumPlayers={(n) => setNumPlayers(n)}
                 setBalls={(n) => setSumBalls(n)}
                 setResult={(n) => setResult(n)}
               />

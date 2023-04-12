@@ -8,7 +8,7 @@ export const FormPage = (props) => {
             <Form
                 numPlayers={props.numPlayers}
                 sumBalls={props.sumBalls}
-                setPlayers={(n) => props.setNumPlayers(n)}
+                setNumPlayers={(n) => props.setNumPlayers(n)}
                 setBalls={(n) => props.setSumBalls(n)}
                 setResult={(n) => props.setResult(n)}
             />
