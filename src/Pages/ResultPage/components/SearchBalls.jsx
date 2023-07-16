@@ -34,7 +34,7 @@ export const SearchBalls = (props) => {
 
     return (
         <div className='search-balls'>
-            <TextField id="filled-basic" label="Ball Number" variant="filled" onChange={(e) => setBallNumber(e.target.value)} />
+            <TextField id="filled-basic" label="Ball Number" type='number' variant="filled" onChange={(e) => setBallNumber(e.target.value)} />
             <Button variant="contained" onClick={() => alertPlayerOwner()}>Search</Button>
         </div>
     )
