@@ -96,3 +96,15 @@ flex-wrap: wrap !important;
   display: flex;
   flex-direction: column;
 }
+.search-balls{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+  position: absolute !important;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  margin-bottom: 5em;
+  padding: 10px;
+}

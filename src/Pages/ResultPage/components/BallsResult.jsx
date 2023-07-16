@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import { NavBarConfig, ResultPageConfig } from '../../../config'
 import returnNumbers from '../../../algorithm/algo'
 import Ball from '../../General/Ball';
+import { SearchBalls } from './SearchBalls'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -55,7 +56,6 @@ export const BallsResult = (props) => {
     const [show, setShow] = useState(false)
     const [value, setValue] = React.useState(0);
     const [result, setResult] = React.useState(returnNumbers(props.players, props.sumBalls));
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
         setShow(false)
@@ -112,8 +112,9 @@ export const BallsResult = (props) => {
                             }
                         </TabPanel>
                     )
-                })
-            }
+                })}
+            <SearchBalls result={result} />
+
         </Box >
 
     );
