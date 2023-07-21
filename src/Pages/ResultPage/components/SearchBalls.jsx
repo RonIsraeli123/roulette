@@ -12,10 +12,10 @@ export const SearchBalls = (props) => {
         }
         const playerNumber = getBallsOwner()
         if (playerNumber !== -1) {
-            alert(`${ballNumber} ball belong to ${playerNumber} player number`)
+            alert(`The ${ballNumber} ball belongs to player number ${playerNumber}`)
         }
         else {
-            alert(`${ballNumber} ball belong to nobody`)
+            alert(`The ${ballNumber} ball doesn't belong to any player`)
         }
     }
 
