@@ -1,10 +1,10 @@
 import React from 'react'
 import { BallsResult } from './components/BallsResult'
 
-export const ResultPage = (props) => {
+export const ResultPage = () => {
     return (
         <div className='ballsResult'>
-            <BallsResult result={props.result} setResult={props.setResult} players={props.players} sumBalls={props.sumBalls} />
+            <BallsResult />
         </div>
     )
 }

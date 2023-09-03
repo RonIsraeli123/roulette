@@ -7,6 +7,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useSelector, useDispatch } from 'react-redux';
+import { setNumPlayer, setNumBalls } from '../../../redux/slices/gameSlice';
 
 
 import { Config, GameFormConfig } from '../../../config'
@@ -18,9 +20,11 @@ const validation = (players) => {
     return true;
 }
 
-export const Form = (props) => {
-    const playersSumChoice = [2, 3, 4, 5]
-    const ballsSumChoice = [1, 2, 3]
+export const Form = () => {
+    const dispatch = useDispatch();
+
+    const numPlayer = useSelector((state) => state.game.gameData['numPlayer']);
+    const numBalls = useSelector((state) => state.game.gameData['numBalls']);
 
     return (
         <div className="GameForm">
@@ -31,20 +35,20 @@ export const Form = (props) => {
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value={props.numPlayers}
+                            value={numPlayer}
                             label={GameFormConfig.NUMBER_OF_PLAYERS}
                             onChange={
                                 e => {
                                     if (validation(e.target.value)) {
-                                        props.setNumPlayers(e.target.value);
+                                        dispatch(setNumPlayer(e.target.value));
                                     } else {
-                                        e.target.value = props.numPlayers;
+                                        e.target.value = numPlayer;
                                         alert(GameFormConfig.PLAYERS_ALERT_MESSAGE_TEXT);
                                     }
                                 }
                             }
                         >
-                            {playersSumChoice.map((element, index) => {
+                            {GameFormConfig.PLAYER_NUMBER.map((element, index) => {
                                 return <MenuItem key={index} value={element}>{element}</MenuItem>
                             })}
                         </Select>
@@ -57,15 +61,15 @@ export const Form = (props) => {
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value={props.sumBalls}
+                            value={numBalls}
                             label={GameFormConfig.NUMBER_OF_BALLS}
                             onChange={
                                 e => {
-                                    props.setBalls(e.target.value);
+                                    dispatch(setNumBalls(e.target.value));
                                 }
                             }
                         >
-                            {ballsSumChoice.map((element, index) => {
+                            {GameFormConfig.BALLS_NUMBER.map((element, index) => {
                                 return <MenuItem key={index} value={element}>{element}</MenuItem>
                             })}
 

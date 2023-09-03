@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { useSelector } from 'react-redux';
 
-export const SearchBalls = (props) => {
+export const SearchBalls = () => {
+    const playerBallsResult = useSelector((state) => state.game.gameData['playerBallsResult']);
+
     const [ballNumber, setBallNumber] = useState('')
 
     const alertPlayerOwner = () => {
@@ -20,9 +23,9 @@ export const SearchBalls = (props) => {
     }
 
     const getBallsOwner = () => {
-        for (let index = 0; index < props.result.length; index++) {
+        for (let index = 0; index < playerBallsResult.length; index++) {
             let playerBalls = []
-            props.result[index].forEach(element => {
+            playerBallsResult[index].forEach(element => {
                 playerBalls.push(element[0])
             });
             if (playerBalls.includes(parseInt(ballNumber))) {

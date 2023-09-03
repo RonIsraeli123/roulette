@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Tabs from '@mui/material/Tabs';
@@ -16,6 +16,9 @@ import { NavBarConfig, ResultPageConfig } from '../../../config'
 import returnNumbers from '../../../algorithm/algo'
 import Ball from '../../General/Ball';
 import { SearchBalls } from './SearchBalls'
+
+import { useSelector, useDispatch } from 'react-redux';
+import { setPlayerBallsResult } from '../../../redux/slices/gameSlice';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -50,12 +53,22 @@ function a11yProps(index) {
     };
 }
 
-export const BallsResult = (props) => {
+export const BallsResult = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const numPlayer = useSelector((state) => state.game.gameData['numPlayer']);
+    const numBalls = useSelector((state) => state.game.gameData['numBalls']);
+
+    useEffect(() => {
+        dispatch(setPlayerBallsResult(returnNumbers(numPlayer, numBalls)));
+    }, [dispatch, numBalls, numPlayer]);
+
+
+    const playerBallsResult = useSelector((state) => state.game.gameData['playerBallsResult']);
 
     const [show, setShow] = useState(false)
     const [value, setValue] = React.useState(0);
-    const [result, setResult] = React.useState(returnNumbers(props.players, props.sumBalls));
     const handleChange = (event, newValue) => {
         setValue(newValue);
         setShow(false)
@@ -68,7 +81,7 @@ export const BallsResult = (props) => {
                     <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/Form') }} endIcon={<CompareArrowsIcon />}>
                         {NavBarConfig.GO_BACK}
                     </Button>
-                    <Button className='ButtonNav' variant="outlined" onClick={() => { setResult(returnNumbers(props.players, props.sumBalls)); setShow(false) }} endIcon={<RefreshIcon />}>
+                    <Button className='ButtonNav' variant="outlined" onClick={() => { dispatch(setPlayerBallsResult((returnNumbers(numPlayer, numBalls)))); setShow(false) }} endIcon={<RefreshIcon />}>
                         {NavBarConfig.RESHUFFLE}
                     </Button >
                     <Button className='ButtonNav' variant="outlined" onClick={() => { navigate('/') }} endIcon={<MenuBookIcon />}>
@@ -77,14 +90,14 @@ export const BallsResult = (props) => {
                 </div >
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     {
-                        result.map((item, index) => {
+                        playerBallsResult.map((item, index) => {
                             return <Tab key={index} label={`${ResultPageConfig.PLAYER_TITLE} ${index + 1} `} {...a11yProps(index)} />
                         })
                     }
                 </Tabs>
             </Box >
             {
-                result.map((item, index) => {
+                playerBallsResult.map((item, index) => {
                     return (
                         <TabPanel key={index} value={value} index={index}>
                             {show ?
@@ -113,7 +126,7 @@ export const BallsResult = (props) => {
                         </TabPanel>
                     )
                 })}
-            <SearchBalls result={result} />
+            <SearchBalls />
 
         </Box >
 

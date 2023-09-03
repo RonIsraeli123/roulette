@@ -2,16 +2,10 @@ import React from 'react'
 
 import { Form } from './components/Form'
 
-export const FormPage = (props) => {
+export const FormPage = () => {
     return (
         <div>
-            <Form
-                numPlayers={props.numPlayers}
-                sumBalls={props.sumBalls}
-                setNumPlayers={(n) => props.setNumPlayers(n)}
-                setBalls={(n) => props.setBalls(n)}
-                setResult={(n) => props.setResult(n)}
-            />
+            <Form />
         </div>
     )
 }
