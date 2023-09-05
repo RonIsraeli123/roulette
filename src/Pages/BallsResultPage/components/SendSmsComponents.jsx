@@ -21,10 +21,7 @@ export const SendSmsComponent = (props) => {
                 playerBalls.push(ballData[0])
             }
             sendMessage(userPhoneNumber, `\n ***YOUR BALLS NUMBERS ARE - ${playerBalls}***`)
-
-            alert("Balls number are sent")
         }
-
         else {
             alert("Invalid number")
         }

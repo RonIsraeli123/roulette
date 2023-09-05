@@ -48,7 +48,7 @@ export const BallsTapPanel = (props) => {
             {
                 playerBallsResult.map((item, index) => {
                     return (
-                        <div>
+                        <div key={index}>
                             <TabPanel key={index} value={props.value} index={index}>
                                 <div className='balls-section'>
                                     <h2>{ResultPageConfig.BALLS_TITLE}</h2>

@@ -24,9 +24,11 @@ export const sendMessage = (userPhoneNumber, content) => {
       },
     })
     .then((response) => {
-      console.log('Message sent successfully:', response.data);
+      alert('Balls number are sent');
     })
     .catch((error) => {
-      console.error('Error sending message:', error);
+      alert(
+        'There was an error, SMS was not sent - it is recommended to manually write the numbers of the snooker balls '
+      );
     });
 };
