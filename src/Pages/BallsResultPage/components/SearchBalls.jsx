@@ -36,7 +36,8 @@ export const SearchBalls = () => {
     }
 
     return (
-        <div className='search-balls'>
+
+        <div className='search_ball'>
             <TextField id="filled-basic" label="Ball Number" type='number' variant="filled" onChange={(e) => setBallNumber(e.target.value)} />
             <Button variant="contained" onClick={() => alertPlayerOwner()}>Search</Button>
         </div>

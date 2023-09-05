@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-import BasicButtons from '../../General/Button'
+import RouteButton from '../../General/RouteButton'
 import { HomeCardConfig } from '../../../config'
 import Snooker from "../../../images/Snooker.jpg"
 
@@ -38,7 +38,7 @@ export const HomeCard = () => {
                 </CardContent>
             </CardActionArea>
             <div className='center'>
-                <BasicButtons route="/Form" text={HomeCardConfig.START_BUTTON_TEXT}></BasicButtons>
+                <RouteButton route="/Form" text={HomeCardConfig.START_BUTTON_TEXT}></RouteButton>
             </div>
         </Card>
     );

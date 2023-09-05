@@ -1,11 +1,19 @@
-import React from 'react'
+import React from 'react';
 
-import { Form } from './components/Form'
+import { RouteButtons } from './components/RouteButtons'
+import { PlayerInput } from './components/PlayerInput'
+import { BallsInput } from './components/BallsInput'
+
 
 export const FormPage = () => {
+
     return (
-        <div>
-            <Form />
+        <div className="GameForm">
+            <div className='form'>
+                <PlayerInput />
+                <BallsInput />
+                <RouteButtons />
+            </div>
         </div>
-    )
+    );
 }

@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 
-const BasicButtons = (props) => {
+const RouteButton = (props) => {
     return (
         <Stack spacing={2} direction="row">
             <Button component={Link} to={props.route} variant="contained" color="inherit">
@@ -12,4 +12,4 @@ const BasicButtons = (props) => {
         </Stack>
     );
 }
-export default BasicButtons
+export default RouteButton

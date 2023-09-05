@@ -36,6 +36,13 @@ html{
   justify-content: center;
   margin: 1em;
 }
+.center_search_find{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
+}
+
 .formLinks{
   display: flex;
   align-items: center;
@@ -66,10 +73,16 @@ html{
 display: flex;
 flex-wrap: nowrap;
 justify-content: center;
-gap: 2px;
-
+gap: 0.5em;
 }
 
+.playerTabs{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+  
 .MuiTabs-flexContainer {
 display: flex !important;
 flex-wrap: wrap !important;
@@ -77,7 +90,6 @@ flex-wrap: wrap !important;
 
 .ballsResult{
   height: 80vh; /* Set the height of the container to the full height of the viewport */
-
 }
 
 .left-down{
@@ -118,6 +130,14 @@ flex-wrap: wrap !important;
   display: flex;
   flex-direction: column;
 }
+
+.search_ball{
+  margin-top: 12em;
+  gap: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
 .PhoneInputInput{
   border-radius: 0.4em;
 }

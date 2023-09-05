@@ -1,24 +1,26 @@
 import axios from 'axios';
 
-export const sendMessage = (userPhoneNumber, content) => {
-  const accountSid = process.env.REACT_APP_ACCOUNT_SID;
-  const authToken = process.env.REACT_APP_ACCESS_TOKEN;
-  const apiUrl =
-    'https://api.twilio.com/2010-04-01/Accounts/AC2f8e5f7c670944f0d90f1718f364a70b/Messages.json';
+import {
+  SMS_URL_SERVICE,
+  ACCOUNT_SID,
+  AUTH_TOKEN,
+  SERVICE_PHONE_NUMBER,
+} from './config';
 
+export const sendMessage = (userPhoneNumber, content) => {
   const data = new URLSearchParams();
   data.append('To', userPhoneNumber);
-  data.append('From', process.env.REACT_APP_NUMBER);
+  data.append('From', SERVICE_PHONE_NUMBER);
   data.append('Body', content);
 
   axios
-    .post(apiUrl, data, {
+    .post(SMS_URL_SERVICE, data, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       auth: {
-        username: accountSid,
-        password: authToken,
+        username: ACCOUNT_SID,
+        password: AUTH_TOKEN,
       },
     })
     .then((response) => {
