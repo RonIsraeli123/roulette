@@ -10,15 +10,19 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input'
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { NavBarConfig, ResultPageConfig } from '../../../config'
+import { NavBarConfig, ResultPageConfig } from '../../../config/resultPageConfig'
 import returnNumbers from '../../../algorithm/algo'
 import Ball from '../../General/Ball';
 import { SearchBalls } from './SearchBalls'
-
-import { useSelector, useDispatch } from 'react-redux';
 import { setPlayerBallsResult } from '../../../redux/slices/gameSlice';
+import { sendMessage } from '../../../algorithm/sendMessage'
+
+import 'react-phone-number-input/style.css'
+
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -68,11 +72,31 @@ export const BallsResult = () => {
     const playerBallsResult = useSelector((state) => state.game.gameData['playerBallsResult']);
 
     const [show, setShow] = useState(false)
+    const [userPhoneNumber, setUserPhoneNumber] = useState('')
     const [value, setValue] = React.useState(0);
     const handleChange = (event, newValue) => {
         setValue(newValue);
         setShow(false)
     };
+
+    const sendSMS = (playerIndex) => {
+        if (isValidPhoneNumber(userPhoneNumber)) {
+            let playerBalls = []
+            const playerData = playerBallsResult[playerIndex]
+            for (let index = 0; index < playerData.length; index++) {
+                const ballData = playerData[index];
+                playerBalls.push(ballData[0])
+            }
+            sendMessage(userPhoneNumber, playerBalls)
+
+            alert("Balls number are sent")
+        }
+
+        else {
+            alert("Invalid number")
+        }
+        setUserPhoneNumber('')
+    }
 
     return (
         <Box sx={{ width: '100%' }}>
@@ -111,6 +135,18 @@ export const BallsResult = () => {
                                     <Button variant="contained" onClick={() => { setShow(!show) }}>
                                         {show ? "hide" : "show"}
                                     </Button>
+                                    <div className='send_sms'>
+                                        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                                            {/* <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} /> */}
+                                            <PhoneInput
+                                                defaultCountry="IL"
+                                                placeholder="Enter phone number"
+                                                value={userPhoneNumber}
+                                                onChange={setUserPhoneNumber} />
+                                            {/* <TextField id="input-with-sx" value={userPhoneNumber} onChange={(e) => { setUserPhoneNumber(e.target.value) }} label="send sms" variant="standard" /> */}
+                                        </Box>
+                                        <Button variant="contained" onClick={() => { sendSMS(index) }}>send sms</Button>
+                                    </div>
                                 </div>
                                 : <div>
                                     <div>
@@ -126,7 +162,10 @@ export const BallsResult = () => {
                         </TabPanel>
                     )
                 })}
-            <SearchBalls />
+            {
+                !show &&
+                <SearchBalls />
+            }
 
         </Box >
 

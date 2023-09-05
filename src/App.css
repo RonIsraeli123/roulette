@@ -104,7 +104,20 @@ flex-wrap: wrap !important;
   position: absolute !important;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 0;
+  margin-top: 10em;
   margin-bottom: 5em;
   padding: 10px;
+}
+.send_sms{
+  border: 1px solid black;
+  padding: 1em;
+  border-radius: 2em;
+  margin: 1em;
+  margin-top: 6.5em;
+  gap: 1em;
+  display: flex;
+  flex-direction: column;
+}
+.PhoneInputInput{
+  border-radius: 0.4em;
 }
