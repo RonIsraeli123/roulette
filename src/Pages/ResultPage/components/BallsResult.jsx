@@ -87,7 +87,7 @@ export const BallsResult = () => {
                 const ballData = playerData[index];
                 playerBalls.push(ballData[0])
             }
-            sendMessage(userPhoneNumber, playerBalls)
+            sendMessage(userPhoneNumber, `\n ***YOUR BALLS NUMBERS ARE - ${playerBalls}***`)
 
             alert("Balls number are sent")
         }
