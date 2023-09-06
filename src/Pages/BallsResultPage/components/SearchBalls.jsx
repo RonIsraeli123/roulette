@@ -44,9 +44,8 @@ export const SearchBalls = () => {
     }
 
     return (
-
         <div className='search_ball'>
-            <TextField id="filled-basic" label={configText.SEARCH_INPUT_TEXT} type='number' variant="filled" onChange={(e) => setBallNumber(e.target.value)} />
+            <TextField id="filled-basic" className='textField-rtl' label={configText.SEARCH_INPUT_TEXT} type='number' variant="filled" onChange={(e) => setBallNumber(e.target.value)} style={{ textAlign: "center !important" }} />
             <Button variant="contained" onClick={() => alertPlayerOwner()}>{configText.SEARCH_BUTTON_TEXT}</Button>
         </div>
     )

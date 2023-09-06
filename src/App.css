@@ -164,3 +164,11 @@ align-items: center;
   border-radius: 1em;
   padding: 1em;
 }
+
+.MuiInputLabel-root{
+  right: 0 !important;
+  text-align: "center" !important;
+  margin: 0 auto !important;
+  position: "absolute" !important;
+  margin-left: 2px !important;
+}
