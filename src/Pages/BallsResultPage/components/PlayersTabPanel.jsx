@@ -6,7 +6,7 @@ import Tab from '@mui/material/Tab';
 
 import { useSelector } from 'react-redux';
 
-import { ResultPageConfig } from '../../../config'
+import { ResultPageConfigEnglish, ResultPageConfigHebrew } from '../../../config'
 
 
 const a11yProps = (index) => {
@@ -17,8 +17,11 @@ const a11yProps = (index) => {
 }
 
 export const PlayersTabPanel = (props) => {
-  const playerBallsResult = useSelector((state) => state.game.gameData['playerBallsResult']);
+  const languageType = useSelector((state) => state.language.languageType);
 
+  const configText = languageType === "hebrew" ? ResultPageConfigHebrew : ResultPageConfigEnglish
+
+  const playerBallsResult = useSelector((state) => state.game.gameData['playerBallsResult']);
 
   const handleChange = (event, newValue) => {
     props.setValue(newValue);
@@ -29,7 +32,7 @@ export const PlayersTabPanel = (props) => {
       <Tabs value={props.value} onChange={handleChange}>
         {
           playerBallsResult.map((item, index) => {
-            return <Tab key={index} label={`${ResultPageConfig.PLAYER_TITLE} ${index + 1} `} {...a11yProps(index)} />
+            return <Tab key={index} label={`${configText.PLAYER_TITLE} ${index + 1} `} {...a11yProps(index)} />
           })
         }
       </Tabs>

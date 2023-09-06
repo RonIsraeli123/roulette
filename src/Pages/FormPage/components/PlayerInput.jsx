@@ -9,14 +9,17 @@ import Select from '@mui/material/Select';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { setNumPlayer } from '../../../redux/slices/gameSlice';
-import { Config, GameFormConfig } from '../../../config'
+import { Config, GameGeneralConfig, GameFormConfigEnglish, GameFormConfigHebrew } from '../../../config'
 
 
 export const PlayerInput = () => {
     const dispatch = useDispatch();
 
-    const numPlayer = useSelector((state) => state.game.gameData['numPlayer']);
+    const languageType = useSelector((state) => state.language.languageType);
 
+    const configText = languageType === "hebrew" ? GameFormConfigHebrew : GameFormConfigEnglish
+
+    const numPlayer = useSelector((state) => state.game.gameData['numPlayer']);
 
     const validation = (players) => {
         if (players > Config.MAX_PLAYERS || players < Config.MIN_PLAYERS) {
@@ -28,24 +31,24 @@ export const PlayerInput = () => {
         <div>
             <Box sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">{GameFormConfig.NUMBER_OF_PLAYERS}</InputLabel>
+                    <InputLabel id="demo-simple-select-label">{configText.NUMBER_OF_PLAYERS}</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={numPlayer}
-                        label={GameFormConfig.NUMBER_OF_PLAYERS}
+                        label={configText.NUMBER_OF_PLAYERS}
                         onChange={
                             e => {
                                 if (validation(e.target.value)) {
                                     dispatch(setNumPlayer(e.target.value));
                                 } else {
                                     e.target.value = numPlayer;
-                                    alert(GameFormConfig.PLAYERS_ALERT_MESSAGE_TEXT);
+                                    alert(configText.PLAYERS_ALERT_MESSAGE_TEXT);
                                 }
                             }
                         }
                     >
-                        {GameFormConfig.PLAYER_NUMBER.map((element, index) => {
+                        {GameGeneralConfig.PLAYER_NUMBER.map((element, index) => {
                             return <MenuItem key={index} value={element}>{element}</MenuItem>
                         })}
                     </Select>

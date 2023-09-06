@@ -1,7 +1,6 @@
 html{
   height: 100vh;
     width: 100vw;
-    direction: ltr;
     background-color: aliceblue;
 }
 
@@ -9,6 +8,14 @@ html{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.hebrew{
+  direction: rtl !important;
+}
+
+.english{
+  direction: ltr !important;
 }
 
 .GameForm {
@@ -140,4 +147,20 @@ flex-wrap: wrap !important;
 
 .PhoneInputInput{
   border-radius: 0.4em;
+}
+.MuiStack-root{
+direction: rtl !important;
+}
+
+.translate-page{
+display: flex;
+
+justify-content: center;
+align-items: center;
+}
+
+.translate-component{
+  border: 1px solid black;
+  border-radius: 1em;
+  padding: 1em;
 }

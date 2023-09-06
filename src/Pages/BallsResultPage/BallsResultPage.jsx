@@ -20,7 +20,7 @@ export const BallsResultPage = () => {
     }, [dispatch, numBalls, numPlayer]);
 
     const [show, setShow] = useState(false)
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
 
     return (
         <div className='ballsResult'>

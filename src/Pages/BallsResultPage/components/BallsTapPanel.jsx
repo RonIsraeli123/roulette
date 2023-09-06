@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 import { BallsView } from './BallsView'
-import { ResultPageConfig } from '../../../config'
+import { ResultPageConfigEnglish, ResultPageConfigHebrew } from '../../../config'
 import { SendSmsComponent, SearchBalls } from '../components'
 
 import 'react-phone-number-input/style.css'
@@ -41,6 +41,10 @@ TabPanel.propTypes = {
 
 
 export const BallsTapPanel = (props) => {
+    const languageType = useSelector((state) => state.language.languageType);
+
+    const configText = languageType === "hebrew" ? ResultPageConfigHebrew : ResultPageConfigEnglish
+
     const playerBallsResult = useSelector((state) => state.game.gameData['playerBallsResult']);
 
     return (
@@ -51,12 +55,12 @@ export const BallsTapPanel = (props) => {
                         <div key={index}>
                             <TabPanel key={index} value={props.value} index={index}>
                                 <div className='balls-section'>
-                                    <h2>{ResultPageConfig.BALLS_TITLE}</h2>
+                                    <h2>{configText.BALLS_TITLE}</h2>
                                     {props.show &&
                                         <BallsView item={item} show={props.show} index={index} setShow={props.setShow} />
                                     }
                                     <Button variant="contained" onClick={() => { props.setShow(!props.show) }}>
-                                        {props.show ? "hide" : "show"}
+                                        {props.show ? configText.BUTTON_HIDE_TEXT : configText.BUTTON_SHOW_TEXT}
                                     </Button>
                                 </div>
                                 <Box className='center_search_find'>

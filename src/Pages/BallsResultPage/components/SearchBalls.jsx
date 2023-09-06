@@ -1,9 +1,17 @@
 import React, { useState } from 'react'
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+
 import { useSelector } from 'react-redux';
 
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
+import { ResultPageConfigEnglish, ResultPageConfigHebrew } from '../../../config'
+
 export const SearchBalls = () => {
+    const languageType = useSelector((state) => state.language.languageType);
+
+    const configText = languageType === "hebrew" ? ResultPageConfigHebrew : ResultPageConfigEnglish
+
     const playerBallsResult = useSelector((state) => state.game.gameData['playerBallsResult']);
 
     const [ballNumber, setBallNumber] = useState('')
@@ -15,10 +23,10 @@ export const SearchBalls = () => {
         }
         const playerNumber = getBallsOwner()
         if (playerNumber !== -1) {
-            alert(`The ${ballNumber} ball belongs to player number ${playerNumber}`)
+            alert(`${ballNumber} ball number belongs to player number ${playerNumber}`)
         }
         else {
-            alert(`The ${ballNumber} ball doesn't belong to any player`)
+            alert(`${ballNumber} ball number doesn't belong to any player`)
         }
     }
 
@@ -38,8 +46,8 @@ export const SearchBalls = () => {
     return (
 
         <div className='search_ball'>
-            <TextField id="filled-basic" label="Ball Number" type='number' variant="filled" onChange={(e) => setBallNumber(e.target.value)} />
-            <Button variant="contained" onClick={() => alertPlayerOwner()}>Search</Button>
+            <TextField id="filled-basic" label={configText.SEARCH_INPUT_TEXT} type='number' variant="filled" onChange={(e) => setBallNumber(e.target.value)} />
+            <Button variant="contained" onClick={() => alertPlayerOwner()}>{configText.SEARCH_BUTTON_TEXT}</Button>
         </div>
     )
 }
